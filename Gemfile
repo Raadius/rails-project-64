@@ -31,6 +31,8 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+gem "slim-rails", "~> 3.7.0"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
@@ -45,11 +47,15 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
   # Use sqlite3 as the database for Active Record
   gem "sqlite3", ">= 1.4"
+  gem 'minitest-power_assert'
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+
+  # Slim template linter [https://github.com/sds/slim-lint]
+  gem "slim_lint", require: false
 end
 
 group :test do
