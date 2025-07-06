@@ -1,0 +1,116 @@
+# Configuration for slim-lint
+# https://github.com/sds/slim-lint
+
+# List of file extensions to examine
+file_extensions:
+  - '.slim'
+
+# Exclude certain files/directories from being linted
+exclude:
+  - 'vendor/**/*'
+  - 'node_modules/**/*'
+  - 'tmp/**/*'
+
+# Report lint warnings in addition to errors
+warnings: true
+
+# Configure individual linters
+linters:
+  # Check for commented out code
+  CommentControlStatement:
+    enabled: true
+
+  # Check for control statements that should be on their own line
+  ControlStatementSpacing:
+    enabled: true
+
+  # Ensure there are no empty lines
+  EmptyLines:
+    enabled: true
+
+  # File encoding should be UTF-8
+  FileLength:
+    enabled: true
+    max: 300
+
+  # Check for inconsistent indentation
+  IndentationWidth:
+    enabled: true
+    width: 2
+
+  # Check for lines that are too long
+  LineLength:
+    enabled: true
+    max: 120
+
+  # Check for redundant div tags (since div is default)
+  RedundantDiv:
+    enabled: true
+
+  # Check for Ruby interpolation in attributes
+  RubyInterpolation:
+    enabled: true
+
+  # Check for correct spacing around operators
+  SpaceAfterColon:
+    enabled: true
+
+  # Check for spacing around hash rockets
+  SpaceAroundKeyword:
+    enabled: true
+
+  # Check for spaces inside hash braces
+  SpaceInsideHashAttributes:
+    enabled: true
+    style: space
+
+  # Check for trailing whitespace
+  TrailingWhitespace:
+    enabled: true
+
+  # Check for unnecessary string interpolation
+  UnnecessaryStringInterpolation:
+    enabled: true
+
+  # Check for consistent tag casing
+  TagCasing:
+    enabled: true
+
+  # Check for proper nesting
+  ConsecutiveControlStatements:
+    enabled: true
+    max_consecutive: 2
+
+  # Check for proper closing of tags
+  EmptyControlStatement:
+    enabled: true
+
+  # Check for interpolation in attributes
+  InterpolationInAttributes:
+    enabled: false  # Can be useful in Rails views
+
+  # Check for multiple successive blank lines
+  MultipleSuccessiveBlankLines:
+    enabled: true
+
+  # Check for proper use of Rails helpers
+  RailsHelperUsage:
+    enabled: true
+
+  # Check for consistent spacing
+  SpaceBeforeScript:
+    enabled: true
+
+  # Check for consistent attribute formatting
+  SpaceInsideStringInterpolation:
+    enabled: true
+    style: no_space
+
+  # Check for tabs vs spaces
+  Tab:
+    enabled: true
+
+  # Ensure proper quote usage
+  Quote:
+    enabled: true
+    style: double
