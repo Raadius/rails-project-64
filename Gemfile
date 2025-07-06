@@ -47,7 +47,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
   # Use sqlite3 as the database for Active Record
   gem "sqlite3", ">= 1.4"
-  gem 'minitest-power_assert'
+  gem "minitest-power_assert"
 end
 
 group :development do
