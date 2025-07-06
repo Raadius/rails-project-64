@@ -5,4 +5,4 @@ render-build:
 	bundle exec rails db:migrate
 
 render-start:
-	bundle exec puma -t 5:5 -p ${PORT} -e ${RACK_ENV}
+	bundle exec puma -t 5:5 -p $${PORT:-3000} -e $${RAILS_ENV:-development}
