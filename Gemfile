@@ -41,13 +41,14 @@ group :development, :test do
   gem 'debug', platforms: %i[ mri windows ], require: 'debug/prelude'
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
-  gem 'brakeman', require: false
-
+  gem 'brakeman'
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
-  gem 'rubocop-rails-omakase', require: false
+  gem 'rubocop-rails-omakase'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '>= 1.4'
   gem 'minitest-power_assert'
+  gem 'rubocop-performance'
+  gem 'simple_form'
 end
 
 group :development do
@@ -67,3 +68,5 @@ end
 group :production do
   gem 'pg'
 end
+
+gem 'devise', '~> 4.9'

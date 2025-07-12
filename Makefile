@@ -7,6 +7,9 @@ render-build:
 render-start:
 	bundle exec puma -t 5:5 -p $${PORT:-3000} -e $${RAILS_ENV:-development}
 
+start-server:
+	bundle exec rails server
+
 # Linting tasks
 slim-lint:
 	bundle exec slim-lint app/views/

@@ -1,0 +1,25 @@
+.container
+  .row.justify-content-center
+    .col-md-6
+      h2 = t('forms.sign_up')
+
+      = simple_form_for(resource, as: resource_name, url: user_registration_path) do |f|
+        .mb-3
+          = f.input :email,
+                  class: 'form-control',
+                  placeholder: t('forms.placeholders.email'),
+                  autofocus: true,
+                  autocomplete: 'email'
+          = f.input :password,
+                  class: 'form-control',
+                  placeholder: t('forms.placeholders.password'),
+                  autocomplete: 'new-password'
+          = f.input :password_confirmation,
+                  class: 'form-control',
+                  placeholder: t('forms.placeholders.password_confirmation'),
+                  autocomplete: 'new-password'
+        .actions
+          = f.submit t('forms.sign_up'), class: 'btn btn-primary'
+
+      .mt-3
+        = link_to t('forms.sign_in'), new_user_session_path, class: 'text-decoration-none'

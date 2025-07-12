@@ -1,0 +1,24 @@
+.container
+  .row.justify-content-center
+    .col-md-6
+      h2 = t('forms.sign_in')
+
+      = simple_form_for(resource, as: resource_name, url: user_session_path) do |f|
+        .mb-3
+          = f.input :email,
+                  class: 'form-control',
+                  placeholder: t('forms.placeholders.email'),
+                  autofocus: true,
+                  autocomplete: 'email'
+          = f.input :password,
+                  class: 'form-control',
+                  placeholder: t('forms.placeholders.password'),
+                  autocomplete: 'current-password'
+          - if devise_mapping.rememberable?
+            = f.check_box :remember_me
+            = f.label :remember_me
+        .actions
+          = f.submit t('forms.sign_in'), class: 'btn btn-primary'
+
+      .mt-3
+        = link_to t('forms.sign_up_form'), new_user_registration_path, class: 'text-decoration-none'

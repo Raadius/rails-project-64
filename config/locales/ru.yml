@@ -1,0 +1,16 @@
+ru:
+  forms:
+    sign_in: "Войти"
+    sign_up: "Зарегистрироваться"
+    logout: "Выйти"
+    sign_up_form: "Регистрация"
+    placeholders:
+      email: "Email"
+      password: "Пароль"
+      remember_me: "Запомнить меня"
+      password_confirmation: "Подтверждение пароля"
+  navbar:
+    sign_in: "Войти"
+    sign_up: "Зарегистрироваться"
+    logout: "Выйти"
+    new_post: "Новый пост"

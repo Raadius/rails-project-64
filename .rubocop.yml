@@ -1,7 +1,7 @@
 # Omakase Ruby styling for Rails
 inherit_gem: { rubocop-rails-omakase: rubocop.yml }
+plugins: rubocop-performance
 
-# Project-specific overrides and additional configurations
 AllCops:
   TargetRubyVersion: 3.2
   NewCops: enable

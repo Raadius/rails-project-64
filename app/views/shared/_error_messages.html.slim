@@ -1,0 +1,6 @@
+- if resource.errors.any?
+  .alert.alert-danger.alert-dismissible.fade.show role="alert"
+    - h4 = pluralize(resource.errors.count, 'ошибка', 'ошибки', 'ошибок')
+    ul.mb-0
+      - resource.errors.full_messages.each do |message|
+        li = message
