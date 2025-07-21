@@ -8,11 +8,11 @@ html
     = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
     = javascript_include_tag 'application', 'data-turbo-track': 'reload', type: 'module'
 
-  body.container.mb-2
+  body.d-flex.flex-column.h-100
     = render 'shared/navbar'
 
     - if notice
-      .alert.alert-info.alert-dismissible.fade.show role="alert"
+      .container.my-4.alert.alert-info.alert-dismissible.fade.show role="alert"
         = notice
         button.btn-close type="button" data-bs-dismiss="alert" aria-label="Close"
 

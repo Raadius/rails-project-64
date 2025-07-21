@@ -1,16 +1,74 @@
 ru:
   forms:
-    sign_in: "Войти"
-    sign_up: "Зарегистрироваться"
-    logout: "Выйти"
-    sign_up_form: "Регистрация"
+    titles:
+      sign_up: "Регистрация"
+      sign_in: "Войти"
+    labels:
+      email: "Email"
+      password: "Пароль"
+      remember_me: "Запомнить меня"
+      password_confirmation: "Подтверждение пароля"
     placeholders:
       email: "Email"
       password: "Пароль"
       remember_me: "Запомнить меня"
       password_confirmation: "Подтверждение пароля"
+    buttons:
+      sign_up: "Зарегистрироваться"
+      sign_in: "Войти"
+      logout: "Выйти"
+    links:
+      sign_up: "Зарегистрироваться"
+      sign_in: "Войти"
+    errors:
+      review_problems_below: "Проверьте, пожалуйста, поля ниже:"
+      invalid_email_or_password: "Неверный Email или пароль."
   navbar:
-    sign_in: "Войти"
+    sign_in: "Войти"
     sign_up: "Зарегистрироваться"
-    logout: "Выйти"
-    new_post: "Новый пост"
+    logout: "Выйти"
+    new_post: "Новый пост"
+  devise:
+    sign_up: "Регистрация"
+    sign_in: "Войти"
+    sign_out: "Выйти"
+    sessions:
+      user:
+        sign_in: "Войти"
+        signed_in: "Вход выполнен успешно!"
+    failure:
+      user:
+        invalid: "Неверный Email или пароль."
+        not_found_in_database: "Пользователь не найден."
+  activerecord:
+    errors:
+      messages:
+        blank: "не может быть пустым"
+        invalid: "имеет неверный формат"
+        taken: "уже используется"
+        too_short: "Пароль недостаточной длины (не может быть меньше 6 символа)"
+        confirmation: "не совпадает с подтверждением"
+      models:
+        user:
+          attributes:
+            email:
+              blank: "Email не может быть пустым"
+              invalid: "Email имеет неверный формат"
+              taken: "Email уже используется"
+            password:
+              blank: "Пароль не может быть пустым"
+              too_short: "Пароль недостаточной длины (не может быть меньше 6 символа)"
+            password_confirmation:
+              blank: "Подтверждение пароля не может быть пустым"
+              confirmation: "Подтверждение пароля не совпадает с полем Пароль"
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      blank: "не может быть пустым"
+      confirmation: "не совпадает с подтверждением"
+      empty: "не может быть пустым"
+      invalid: "имеет неверное значение"
+      taken: "уже используется"
+      too_long: "слишком длинное (максимум %{count} символов)"
+      too_short: "слишком короткое (минимум %{count} символов)"
+      required: "обязательное поле"

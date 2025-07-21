@@ -1,16 +1,74 @@
 en:
   forms:
-    logout: "Logout"
-    sign_up: "Sign up"
-    sign_in: "Sign in"
-    sign_up_form: "Create account"
+    titles:
+      sign_up: "Sign up"
+      sign_in: "Sign in"
+    buttons:
+      sign_up: "Sign up"
+      sign_in: "Sign in"
+      logout: "Logout"
+    links:
+      sign_up: "Sign up"
+      sign_in: "Sign in"
+    labels:
+      email: "Email"
+      password: "Password"
+      remember_me: "Remember me"
+      password_confirmation: "Confirm your password"
     placeholders:
       email: "Email"
       password: "Password"
       remember_me: "Remember me"
       password_confirmation: "Password confirmation"
+    errors:
+      review_problems_below: "Please review the problems below:"
+      invalid_email_or_password: "Invalid Email or password."
   navbar:
     sign_in: "Sign in"
     sign_up: "Sign up"
     logout: "Logout"
     new_post: "New post"
+  devise:
+    sign_up: "Sign up"
+    sign_in: "Sign in"
+    sign_out: "Logout"
+    sessions:
+      user:
+        sign_in: "Sign in"
+        signed_in: "Signed in successfully!"
+    failure:
+      user:
+        invalid: "Invalid Email or password."
+        not_found_in_database: "User is not found in database."
+  activerecord:
+    errors:
+      messages:
+        blank: "can't be blank"
+        invalid: "has an invalid format"
+        taken: "is already taken"
+        too_short: "Password is too short (minimum is 6 characters)"
+        confirmation: "doesn't match Password"
+      models:
+        user:
+          attributes:
+            email:
+              blank: "Email can't be blank"
+              invalid: "Email has an invalid format"
+              taken: "Email is already taken"
+            password:
+              blank: "Password can't be blank"
+              too_short: "Password is too short (minimum is 6 characters)"
+            password_confirmation:
+              blank: "Password confirmation can't be blank"
+              confirmation: "Password confirmation doesn't match Password"
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      blank: "can't be blank"
+      confirmation: "doesn't match Password"
+      empty: "can't be empty"
+      invalid: "has an invalid format"
+      taken: "is already taken"
+      too_short: "is too short (minimum is %{count} characters)"
+      too_long: "is too long (maximum is %{count} characters)"
+      required: "is required"

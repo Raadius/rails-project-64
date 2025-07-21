@@ -1,0 +1,15 @@
+ru:
+  simple_form:
+    "yes": 'Да'
+    "no": 'Нет'
+    required:
+      text: 'обязательное поле'
+      mark: '*'
+      html: '<abbr title="обязательное поле">*</abbr>'
+    error_notification:
+      default_message: "Проверьте введенные данные:"
+    placeholders:
+      user:
+        email: 'Email'
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'

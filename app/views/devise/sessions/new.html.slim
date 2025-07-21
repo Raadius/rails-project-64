@@ -1,24 +1,24 @@
-.container
-  .row.justify-content-center
-    .col-md-6
-      h2 = t('forms.sign_in')
+.container.my-4
+  h2 = t('forms.titles.sign_in')
+  
+  - if flash[:alert]
+    .alert.alert-info role="alert"
+      = flash[:alert]
 
-      = simple_form_for(resource, as: resource_name, url: user_session_path) do |f|
-        .mb-3
-          = f.input :email,
-                  class: 'form-control',
-                  placeholder: t('forms.placeholders.email'),
-                  autofocus: true,
-                  autocomplete: 'email'
-          = f.input :password,
-                  class: 'form-control',
-                  placeholder: t('forms.placeholders.password'),
-                  autocomplete: 'current-password'
-          - if devise_mapping.rememberable?
-            = f.check_box :remember_me
-            = f.label :remember_me
-        .actions
-          = f.submit t('forms.sign_in'), class: 'btn btn-primary'
+  = simple_form_for(resource, as: resource_name, url: user_session_path) do |f|
+    .form-inputs.d-flex.flex-column.gap-3.mb-3
+      = f.input :email, label: t('forms.labels.email'),
+              autofocus: true,
+              input_html: { autocomplete: 'email', class: 'form-control' }
+      = f.input :password, label: t('forms.labels.password'),
+              input_html: { autocomplete: 'current-password', class: 'form-control' }
+      - if devise_mapping.rememberable?
+        .d-flex.flex-row.gap-2
+          = f.check_box :remember_me
+          = f.label :remember_me, label: t('forms.labels.remember_me')
 
-      .mt-3
-        = link_to t('forms.sign_up_form'), new_user_registration_path, class: 'text-decoration-none'
+    .form-actions
+      = f.button :submit, t('forms.buttons.sign_in'), class: 'btn btn-primary'
+
+  .mt-3
+    = link_to t('forms.links.sign_up'), new_user_registration_path, class: 'text-decoration-none'
