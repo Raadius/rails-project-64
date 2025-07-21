@@ -43,7 +43,7 @@ group :development, :test do
   gem 'debug', platforms: %i[ mri windows ], require: 'debug/prelude'
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
-  gem 'brakeman'
+  gem 'brakeman', '~> 7.1.0'
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem 'rubocop-rails-omakase'
   # Use sqlite3 as the database for Active Record
