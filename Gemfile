@@ -32,6 +32,8 @@ gem 'tzinfo-data', platforms: %i[ windows jruby ]
 gem 'bootsnap', require: false
 
 gem 'slim-rails', '~> 3.7.0'
+gem 'simple_form'
+gem 'devise', '~> 4.9'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -48,7 +50,6 @@ group :development, :test do
   gem 'sqlite3', '>= 1.4'
   gem 'minitest-power_assert'
   gem 'rubocop-performance'
-  gem 'simple_form'
 end
 
 group :development do
@@ -68,5 +69,3 @@ end
 group :production do
   gem 'pg'
 end
-
-gem 'devise', '~> 4.9'
