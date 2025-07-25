@@ -8,7 +8,7 @@ ol.breadcrumb
     h1.mb-4.mb-lg-5 = post.title
     p = post.body
     .d-flex.justify-content-between.mt-5
-      div id="post-section"
+      div id='post-section'
         span.me-2 = post.creator.email
         span = time_ago_in_words(post.created_at) + ' ' + t('common_text.ago')
-      div id="likes-section"
+      div id='likes-section'
