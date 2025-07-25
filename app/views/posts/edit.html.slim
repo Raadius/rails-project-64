@@ -1,10 +1,4 @@
-h1 = t('post.edit.title')
-
-== render 'form' post: @post
-
-br
-
-div
-  => link_to 'Show this post', @post
-  '|
-  =< link_to 'Back to posts', posts_path
+.container.my-4
+  == render 'shared/error_messages', resource: @post
+  h1 = t('post.edit.title')
+  == render 'form', post: @post
