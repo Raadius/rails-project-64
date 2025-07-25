@@ -7,3 +7,9 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+default_categories = %w[general music movies lifestyle]
+
+default_categories.each do |category_name|
+  Category.find_or_create_by!(name: I18n.t("categories.#{category_name}"))
+end

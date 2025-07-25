@@ -1,0 +1,9 @@
+- if notice
+  .container.mt-4.alert.alert-info.alert-dismissible.fade.show role="alert"
+    = notice
+    button.btn-close type="button" data-bs-dismiss="alert" aria-label="Close"
+
+- if flash[:alert]
+    .container.mt-4
+      .alert.alert-info role="alert"
+        = flash[:alert]

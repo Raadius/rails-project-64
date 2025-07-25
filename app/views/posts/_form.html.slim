@@ -1,0 +1,10 @@
+= simple_form_for(@post) do |f|
+  .form-inputs.d-flex.flex-column.gap-3
+    = f.input :title, label: t('forms.labels.title'), hint: t('forms.hints.post_title_allowed_symbols_number')
+    = f.association :category, label: t('forms.labels.category')
+    = f.input :body,
+            label: t('forms.labels.body'),
+            class: 'textarea form-control',
+            hint: t('forms.hints.post_body_allowed_symbols_number')
+
+  = f.button :submit, t('forms.buttons.publish'), class: 'btn btn-primary mt-3'

@@ -1,11 +1,25 @@
 require 'test_helper'
 
-# TODO[ALX]: Здесь тест должен получить index со списком постов. При попытке на этой странице
-# TODO[ALX]: куда-то тыкнуть, должен перенаправить на страницу входа. Пока тут тест на редирект при открытии рутовой страницы
 class HomeControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    @user = users(:two)
+  end
+
   test 'should get index' do
     get root_url
-    assert_response :redirect
+    assert_response :found
     assert_redirected_to new_user_session_url
+  end
+
+  test 'should show empty page if authenticated with no posts' do
+    Post.delete_all
+
+    sign_in @user
+    get root_url
+    assert_response :success
+
+    assert_select 'h1', text: I18n.t('common_text.main_page_title')
+    assert_select '#posts span', text: I18n.t('post.empty')
+    assert_select '#posts a', text: I18n.t('post.create_new_post')
   end
 end

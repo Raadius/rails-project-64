@@ -50,6 +50,7 @@ group :development, :test do
   gem 'sqlite3', '>= 1.4'
   gem 'minitest-power_assert'
   gem 'rubocop-performance'
+  gem 'faker'
 end
 
 group :development do

@@ -1,10 +1,5 @@
 .container.my-4
   h2 = t('forms.titles.sign_in')
-
-  - if flash[:alert]
-    .alert.alert-info role="alert"
-      = flash[:alert]
-
   = simple_form_for(resource, as: resource_name, url: user_session_path) do |f|
     .form-inputs.d-flex.flex-column.gap-3.mb-3
       = f.input :email, label: t('forms.labels.email'),

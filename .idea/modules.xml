@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/rails-project-64.iml" filepath="$PROJECT_DIR$/.idea/rails-project-64.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../tasks-users-statuses/.idea/tasks-users-statuses.iml" filepath="$PROJECT_DIR$/../tasks-users-statuses/.idea/tasks-users-statuses.iml" />
     </modules>
   </component>
 </project>

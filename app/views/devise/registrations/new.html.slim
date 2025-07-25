@@ -1,11 +1,8 @@
 .container.my-4
+  == render 'shared/error_messages', resource: resource
   h2 = t('forms.titles.sign_up')
-
   = simple_form_for(resource, as: resource_name, url: user_registration_path) do |f|
     .form-inputs.d-flex.flex-column.gap-3.mb-3
-      - if resource.errors.any?
-        .alert.alert-danger
-          = f.error_notification message: t('forms.errors.review_problems_below')
       .form-group
         = f.input :email, autofocus: true, input_html: { autocomplete: 'email', class: 'form-control' },
               label: t('forms.labels.email')

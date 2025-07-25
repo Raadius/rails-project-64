@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title = 'Hexlet Blog'
+    title = 'Коллективный блог'
     meta(name = 'viewport' content = 'width=device-width,initial-scale=1')
     = csrf_meta_tags
     = csp_meta_tag
@@ -10,11 +10,7 @@ html
 
   body.d-flex.flex-column.h-100
     = render 'shared/navbar'
-
-    - if notice
-      .container.my-4.alert.alert-info.alert-dismissible.fade.show role="alert"
-        = notice
-        button.btn-close type="button" data-bs-dismiss="alert" aria-label="Close"
+    = render 'shared/notices'
 
     main
       = yield

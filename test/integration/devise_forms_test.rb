@@ -9,7 +9,7 @@ class DeviseFormsTest < ActionDispatch::IntegrationTest
     post user_registration_path, params: { user: { email: '', password: '', password_confirmation: '' } }
 
     assert_response :unprocessable_entity
-    assert_select '.error_notification', text: I18n.t('forms.errors.review_problems_below')
+    assert_select '.alert.alert-danger', text: I18n.t('forms.errors.review_problems_below')
   end
 
   test 'registration form shows error for invalid email format' do

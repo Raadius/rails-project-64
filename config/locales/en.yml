@@ -1,4 +1,8 @@
 en:
+  common_text:
+    main_page_title: "Collaborative blog"
+    all_posts_breadcrumb: "Все посты"
+    ago: "ago"
   forms:
     titles:
       sign_up: "Sign up"
@@ -7,6 +11,7 @@ en:
       sign_up: "Sign up"
       sign_in: "Sign in"
       logout: "Logout"
+      publish: "Publish"
     links:
       sign_up: "Sign up"
       sign_in: "Sign in"
@@ -15,19 +20,53 @@ en:
       password: "Password"
       remember_me: "Remember me"
       password_confirmation: "Confirm your password"
+      title: "Title"
+      body: "Body"
+      category: "Category"
     placeholders:
       email: "Email"
       password: "Password"
       remember_me: "Remember me"
       password_confirmation: "Password confirmation"
+    hints:
+      post_body_allowed_symbols_number: "От 200 до 4000 символов"
+      post_title_allowed_symbols_number: "5-255 символов"
+      registration_password_allowed_symbols_minimum_number: "(минимум 6 знаков)"
     errors:
       review_problems_below: "Please review the problems below:"
       invalid_email_or_password: "Invalid Email or password."
+      generic:
+        post: "There was an error creating the post. Please try again."
+        user: "Check the fields below:"
+        category: "There was an error creating the category. Please try again."
   navbar:
     sign_in: "Sign in"
     sign_up: "Sign up"
     logout: "Logout"
     new_post: "New post"
+  categories:
+    general: "General"
+    music: "Music"
+    movies: "Movies"
+    lifestyle: "Lifestyle"
+  post:
+    empty: "There are no posts yet."
+    create_new_post: "Create a new post"
+    new:
+      title: "Create a new post"
+      notice:
+        success: "Post was successfully created!"
+        failed: "Post was not created. Please try again."
+    edit:
+      title: "Edit post"
+      notice:
+        success: "Post was successfully updated!"
+        failed: "Post was not updated. Please try again."
+    destroy:
+      title: "Delete post"
+      notice:
+        success: "Post was successfully deleted!"
+        failed: "There was an error deleting the post. Please try again."
   devise:
     sign_up: "Sign up"
     sign_in: "Sign in"
@@ -36,39 +75,39 @@ en:
       user:
         sign_in: "Sign in"
         signed_in: "Signed in successfully!"
+    registrations:
+      user:
+        signed_up: "You have signed up successfully! Welcome!"
     failure:
       user:
         invalid: "Invalid Email or password."
         not_found_in_database: "User is not found in database."
+        unauthenticated: "To get access to this page, you need to sign in or sign up."
+        already_authenticated: "You are already signed in. Welcome back!"
   activerecord:
     errors:
-      messages:
-        blank: "can't be blank"
-        invalid: "has an invalid format"
-        taken: "is already taken"
-        too_short: "Password is too short (minimum is 6 characters)"
-        confirmation: "doesn't match Password"
       models:
+        post:
+          attributes:
+            title:
+              too_short: "Title is too short. Minimum 5 characters required"
+              blank: "Title can't be blank"
+              too_long: "Title is too long. Maximum 255 characters"
+            category:
+              required: "Category can't be blank"
+            body:
+              too_short: "Content is too short. Minimum 200 characters required"
+              too_long: "Content is too long. Maximum 4000 characters"
+              blank: "Content can't be blank."
         user:
           attributes:
             email:
-              blank: "Email can't be blank"
-              invalid: "Email has an invalid format"
+              blank: "Email can't be blank."
+              invalid: "Email is invalid"
               taken: "Email is already taken"
             password:
               blank: "Password can't be blank"
-              too_short: "Password is too short (minimum is 6 characters)"
+              too_short: "Password is too short. Minimum 6 characters required"
             password_confirmation:
               blank: "Password confirmation can't be blank"
-              confirmation: "Password confirmation doesn't match Password"
-  errors:
-    format: "%{attribute} %{message}"
-    messages:
-      blank: "can't be blank"
-      confirmation: "doesn't match Password"
-      empty: "can't be empty"
-      invalid: "has an invalid format"
-      taken: "is already taken"
-      too_short: "is too short (minimum is %{count} characters)"
-      too_long: "is too long (maximum is %{count} characters)"
-      required: "is required"
+              confirmation: "Password confirmation doesn't match Password field"

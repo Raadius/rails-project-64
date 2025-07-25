@@ -1,33 +1,74 @@
 ru:
+  common_text:
+    main_page_title: "Коллективный блог"
+    all_posts_breadcrumb: "Все посты"
+    ago: "назад"
   forms:
     titles:
       sign_up: "Регистрация"
       sign_in: "Войти"
+      create_post: "Новый пост"
+      update_post: "Редактировать пост"
     labels:
       email: "Email"
       password: "Пароль"
       remember_me: "Запомнить меня"
       password_confirmation: "Подтверждение пароля"
+      title: "Заголовок"
+      body: "Текст"
+      category: "Категория"
     placeholders:
       email: "Email"
       password: "Пароль"
       remember_me: "Запомнить меня"
       password_confirmation: "Подтверждение пароля"
+    hints:
+      post_body_allowed_symbols_number: "От 200 до 4000 символов"
+      post_title_allowed_symbols_number: "5-255 символов"
+      registration_password_allowed_symbols_minimum_number: "(минимум 6 знаков)"
     buttons:
       sign_up: "Зарегистрироваться"
       sign_in: "Войти"
       logout: "Выйти"
+      publish: "Опубликовать"
     links:
       sign_up: "Зарегистрироваться"
       sign_in: "Войти"
     errors:
       review_problems_below: "Проверьте, пожалуйста, поля ниже:"
       invalid_email_or_password: "Неверный Email или пароль."
+      generic:
+        post: "Не удалось создать пост. Проверьте введенные данные."
+        user: "Проверьте, пожалуйста, поля ниже:"
+        category: "Не удалось создать категорию. Проверьте введенные данные."
   navbar:
     sign_in: "Войти"
     sign_up: "Зарегистрироваться"
     logout: "Выйти"
     new_post: "Новый пост"
+  categories:
+    general: "Общее"
+    music: "Музыка"
+    movies: "Кино"
+    lifestyle: "Жизнь"
+  post:
+    empty: "Постов пока ещё нет."
+    create_new_post: "Создать новый пост"
+    new:
+      title: "Новый пост"
+      notice:
+        success: "Пост был успешно создан!"
+        failed: "Пост не был создан. Попробуйте ещё раз."
+    edit:
+      title: "Редактировать пост"
+      notice:
+        success: "Пост был успешно обновлён!"
+        failed: "Пост не был обновлён. Попробуйте ещё раз."
+    destroy:
+      title: "Удалить пост"
+      notice:
+        success: "Пост был успешно удален!"
+        failed: "Произошла ошибка при удалении поста. Попробуйте ещё раз."
   devise:
     sign_up: "Регистрация"
     sign_in: "Войти"
@@ -36,39 +77,105 @@ ru:
       user:
         sign_in: "Войти"
         signed_in: "Вход выполнен успешно!"
+    registrations:
+      user:
+        signed_up: "Вы успешно зарегистрировались! Добро пожаловать!"
     failure:
       user:
         invalid: "Неверный Email или пароль."
         not_found_in_database: "Пользователь не найден."
+        unauthenticated: "Для того чтобы получить доступ к данной странице, нужно войти или зарегистрироваться."
+        already_authenticated: "Вы уже вошли в систему! Добро пожаловать!"
+      registrations:
+        signed_up: "Регистрация прошла успешно!"
   activerecord:
     errors:
-      messages:
-        blank: "не может быть пустым"
-        invalid: "имеет неверный формат"
-        taken: "уже используется"
-        too_short: "Пароль недостаточной длины (не может быть меньше 6 символа)"
-        confirmation: "не совпадает с подтверждением"
       models:
+        post:
+          attributes:
+            title:
+              too_short: "Заголовок слишком короткий. Минимум 5 символов."
+              blank: "Заголовок не может быть пустым."
+              too_long: "Заголовок слишком длинный. Максимум 255 символов."
+            category:
+              required: "Категория не может отсутствовать"
+            body:
+              too_short: "Содержание слишком короткое. Минимум 200 символов."
+              too_long: "Содержание слишком длинное. Максимум 4000 символов."
+              blank: "Содержание не может быть пустым."
         user:
           attributes:
             email:
-              blank: "Email не может быть пустым"
-              invalid: "Email имеет неверный формат"
-              taken: "Email уже используется"
+              blank: "Email не может быть пустым."
+              invalid: "Email имеет неверный формат."
+              taken: "Email уже зарегистрирован."
             password:
-              blank: "Пароль не может быть пустым"
-              too_short: "Пароль недостаточной длины (не может быть меньше 6 символа)"
+              blank: "Пароль не может быть пустым."
+              too_short: "Пароль слишком короткий. Минимум 6 символов."
             password_confirmation:
-              blank: "Подтверждение пароля не может быть пустым"
-              confirmation: "Подтверждение пароля не совпадает с полем Пароль"
-  errors:
-    format: "%{attribute} %{message}"
-    messages:
-      blank: "не может быть пустым"
-      confirmation: "не совпадает с подтверждением"
-      empty: "не может быть пустым"
-      invalid: "имеет неверное значение"
-      taken: "уже используется"
-      too_long: "слишком длинное (максимум %{count} символов)"
-      too_short: "слишком короткое (минимум %{count} символов)"
-      required: "обязательное поле"
+              blank: "Подтверждение пароля не может быть пустым."
+              confirmation: "Подтверждение пароля не совпадает с паролем."
+  datetime:
+    distance_in_words:
+      half_a_minute: "полминуты"
+      less_than_x_seconds:
+        one: "меньше секунды"
+        few: "меньше %{count} секунд"
+        many: "меньше %{count} секунд"
+        other: "меньше %{count} секунд"
+      x_seconds:
+        one: "секунду"
+        few: "%{count} секунды"
+        many: "%{count} секунд"
+        other: "%{count} секунд"
+      less_than_x_minutes:
+        one: "меньше минуты"
+        few: "меньше %{count} минут"
+        many: "меньше %{count} минут"
+        other: "меньше %{count} минут"
+      x_minutes:
+        one: "минуту"
+        few: "%{count} минуты"
+        many: "%{count} минут"
+        other: "%{count} минут"
+      about_x_hours:
+        one: "около часа"
+        few: "около %{count} часов"
+        many: "около %{count} часов"
+        other: "около %{count} часов"
+      x_hours:
+        one: "час"
+        few: "%{count} часа"
+        many: "%{count} часов"
+        other: "%{count} часов"
+      x_days:
+        one: "день"
+        few: "%{count} дня"
+        many: "%{count} дней"
+        other: "%{count} дней"
+      about_x_months:
+        one: "около месяца"
+        few: "около %{count} месяцев"
+        many: "около %{count} месяцев"
+        other: "около %{count} месяцев"
+      x_months:
+        one: "месяц"
+        few: "%{count} месяца"
+        many: "%{count} месяцев"
+        other: "%{count} месяцев"
+      about_x_years:
+        one: "около года"
+        few: "около %{count} лет"
+        many: "около %{count} лет"
+        other: "около %{count} лет"
+      over_x_years:
+        one: "больше года"
+        few: "больше %{count} лет"
+        many: "больше %{count} лет"
+        other: "больше %{count} лет"
+      almost_x_years:
+        one: "почти год"
+        few: "почти %{count} года"
+        many: "почти %{count} лет"
+        other: "почти %{count} лет"
+

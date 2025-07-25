@@ -1,0 +1,14 @@
+ol.breadcrumb
+  li.breadcrumb-item
+    = link_to t('common_text.all_posts_breadcrumb'), root_path
+  li.breadcrumb-item.active = t("categories.#{post.category.name}")
+
+.row.justify-content-center.mt-4
+  article.col-12
+    h1.mb-4.mb-lg-5 = post.title
+    p = post.body
+    .d-flex.justify-content-between.mt-5
+      div id="post-section"
+        span.me-2 = post.creator.email
+        span = time_ago_in_words(post.created_at) + ' ' + t('common_text.ago')
+      div id="likes-section"
