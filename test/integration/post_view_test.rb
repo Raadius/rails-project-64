@@ -2,7 +2,7 @@ require 'test_helper'
 class PostsViewTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:one)
-    @post = posts(:three)
+    @post = posts(:one)
     @category = categories(:two)
   end
 
