@@ -67,6 +67,10 @@ en:
       notice:
         success: "Post was successfully deleted!"
         failed: "There was an error deleting the post. Please try again."
+  comments:
+    title: "Comments"
+    add_new_comment: "Add new comment"
+    add_answer: "Reply"
   devise:
     sign_up: "Sign up"
     sign_in: "Sign in"
@@ -102,7 +106,7 @@ en:
         user:
           attributes:
             email:
-              blank: "Email can't be blank."
+              blank: "Email can't be blank"
               invalid: "Email is invalid"
               taken: "Email is already taken"
             password:
@@ -111,3 +115,9 @@ en:
             password_confirmation:
               blank: "Password confirmation can't be blank"
               confirmation: "Password confirmation doesn't match Password field"
+        post_comments:
+          attributes:
+            content:
+              too_short: "Comment is too short. Minimum 5 characters required"
+              too_long: "Comment is too long. Maximum 400 characters"
+              blank: "Comment can't be blank"

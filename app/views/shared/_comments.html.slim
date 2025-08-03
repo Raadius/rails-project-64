@@ -1,0 +1,14 @@
+.comments-section.mt-5
+  h3.mb-4 = t('comments.title', count: post.post_comments.count)
+
+  - if user_signed_in?
+    .mb-4
+      - comment_object = @comment.presence || PostComment.new
+      = simple_form_for comment_object, url: post_comments_path(post),
+              local: true, html: { class: 'comment-form' } do |f|
+        = f.input :content, as: :text, label: false, error: false, input_html: { class: 'form-control' }
+        .mt-2
+          = f.submit t('comments.add_new_comment'), class: 'btn btn-primary'
+
+    .comments-list
+      = render 'shared/comment_tree', comments: post.post_comments.includes(:user).arrange, post: post

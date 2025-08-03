@@ -1,4 +1,4 @@
 .container.my-4
-  == render 'shared/error_messages', resource: @post
+  = render 'shared/system_message_components/generic_error_messages', resource: @post
   h1 = t('post.edit.title')
   == render 'form', post: @post

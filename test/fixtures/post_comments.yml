@@ -1,0 +1,41 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+root_comment:
+  id: <%= ActiveRecord::FixtureSet.identify(:root_comment) %>
+  content: "This is a root comment"
+  post: one
+  user: one
+  ancestry:
+  ancestry_depth: 0
+
+child_comment:
+  id: <%= ActiveRecord::FixtureSet.identify(:child_comment) %>
+  content: "This is a child comment"
+  post: one
+  user: two
+  ancestry: "/<%= ActiveRecord::FixtureSet.identify(:root_comment) %>/"
+  ancestry_depth: 1
+
+grandchild_comment:
+  id: <%= ActiveRecord::FixtureSet.identify(:grandchild_comment) %>
+  content: "This is a grandchild comment"
+  post: one
+  user: one
+  ancestry: "/<%= ActiveRecord::FixtureSet.identify(:root_comment) %>/<%= ActiveRecord::FixtureSet.identify(:child_comment) %>/"
+  ancestry_depth: 2
+
+another_root_comment:
+  id: <%= ActiveRecord::FixtureSet.identify(:another_root_comment) %>
+  content: "Another root comment on a different post"
+  post: two
+  user: two
+  ancestry:
+  ancestry_depth: 0
+
+another_child_comment:
+  id: <%= ActiveRecord::FixtureSet.identify(:another_child_comment) %>
+  content: "Child of another root comment"
+  post: two
+  user: one
+  ancestry: "/<%= ActiveRecord::FixtureSet.identify(:another_root_comment) %>/"
+  ancestry_depth: 1

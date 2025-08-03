@@ -12,7 +12,9 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should show empty page if authenticated with no posts' do
-    Post.delete_all
+    # Clear dependent records first to avoid foreign key constraint issues
+    PostComment.destroy_all
+    Post.destroy_all
 
     sign_in @user
     get root_url

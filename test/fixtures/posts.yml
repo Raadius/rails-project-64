@@ -7,3 +7,9 @@ one:
   consequat. Duis aute irure dolor."
   category: one
   creator: one
+
+two:
+  title: Another Post
+  body: "Another post body for testing purposes."
+  category: two
+  creator: two

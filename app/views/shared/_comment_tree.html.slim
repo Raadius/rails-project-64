@@ -1,0 +1,31 @@
+- comments.each do |comment, children|
+  .card.mt-2.rounded-0 data-comment-id=comment.id id="comment-#{comment.id}"
+    .card-header.border-0
+      = link_to '#', "#comment-#{comment.id}", class: 'me-2'
+      span.me-2 = comment.user.email
+      span.text-muted.fs-6 = l(comment.created_at, format: :short)
+
+    .card-body.border-0
+      p.card-text = comment.content
+    - if user_signed_in?
+      .card-footer.border-0
+        a.fs-6.text-decoration-underline.text-lowercase.collapsed[
+          type='button'
+          aria-expanded='false'
+          aria-controls="response_comment-#{comment.id}"
+          data-bs-target="#response_comment-#{comment.id}"
+          data-bs-toggle='collapse'
+        ] = t('comments.add_answer')
+
+        .collapse.mt-3 id="response_comment-#{comment.id}"
+          = simple_form_for PostComment.new, url: post_comments_path(post),
+                  local: true,
+                  html: { class: 'reply-form' } do |form|
+            = form.input :parent_id, as: :hidden, input_html: { value: comment.id }
+            = form.input :content, as: :text, class: 'form-control', error: false, label: false
+            .mt-2
+              = form.submit t('comments.add_new_comment'), class: 'btn btn-primary mt-2'
+
+    - unless children.empty?
+      .ms-4.mt-3
+        = render 'shared/comment_tree', comments: children, post: post

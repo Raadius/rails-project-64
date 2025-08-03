@@ -1,0 +1,3 @@
+- if resource.errors.any?
+  .alert.alert-danger.alert-dismissible.fade.show role="alert"
+    span = resource.errors.messages.values.flatten.first

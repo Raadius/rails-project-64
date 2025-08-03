@@ -1,0 +1,16 @@
+.container.my-4
+  h2
+    | Change your password
+  = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+    = f.input :reset_password_token, as: :hidden
+    .form-inputs.d-flex.flex-column.gap-3.mb-3
+      = f.input :password, label: 'New password', required: true, autofocus: true,
+              hint: (@minimum_password_length ? "#{@minimum_password_length} characters minimum" : nil),
+              input_html: { autocomplete: 'new-password' }
+      = f.input :password_confirmation, label: 'Confirm new password',
+              required: true,
+              input_html: { autocomplete: 'new-password' }
+    .form-actions
+      = f.button :submit, 'Change my password', class: 'btn btn-primary'
+  .mt-3
+    = render 'devise/shared/links'

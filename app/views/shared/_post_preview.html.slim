@@ -1,8 +1,0 @@
-.card id="#{dom_id post}"
-  .card-body
-    .card-title
-      = link_to post.title, post_path(post), class: 'h5 card-title text-decoration-none'
-    .card-text.mb-2 = post.body.truncate(300)
-    .text-right.small.text-muted.mt-auto
-      span.me-2 = time_ago_in_words(post.created_at) + ' ' + t('common_text.ago')
-      span = post.creator.email

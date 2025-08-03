@@ -1,0 +1,10 @@
+.container.my-4
+  h2 = 'Resend unlock instructions'
+  = simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
+    .form-inputs.d-flex.flex-column.gap-3.mb-3
+      = f.input :email, required: true, autofocus: true, input_html: { autocomplete: 'email' }
+    .form-actions
+      = f.button :submit, 'Resend unlock instructions', class: 'btn btn-primary'
+
+    .mt-3
+      = render 'devise/shared/links'
