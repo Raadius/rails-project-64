@@ -94,7 +94,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
   test 'show action should return correct subtree' do
     sign_in @user_one
 
-    get post_comment_path(@post, @root_comment), headers: { "Accept": 'text/vnd.turbo-stream.html' }
+    get post_comment_path(@post, @root_comment), headers: { Accept: 'text/vnd.turbo-stream.html' }
 
     assert_response :success
     assert_not_nil assigns(:comment_subtree)

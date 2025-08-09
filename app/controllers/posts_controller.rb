@@ -2,7 +2,7 @@
 
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create]
-  before_action :find_post, only: %i[ show ]
+  before_action :find_post, only: %i[show]
 
   # GET /posts
   def index

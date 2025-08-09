@@ -41,10 +41,7 @@ Metrics/MethodLength:
     - 'db/migrate/*'
 
 Metrics/ClassLength:
-  Max: 120
-  Exclude:
-    - 'test/**/*'
-    - 'spec/**/*'
+  Max: 100
 
 # Layout preferences
 Layout/LineLength:
@@ -55,6 +52,11 @@ Layout/LineLength:
 
 Layout/SpaceInsideArrayLiteralBrackets:
   EnforcedStyle: no_space
+
+Layout/HashAlignment:
+  Enabled: true
+  EnforcedHashRocketStyle: key
+  EnforcedColonStyle: key
 
 # Style preferences for Rails
 Style/Documentation:

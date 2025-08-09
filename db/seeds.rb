@@ -15,7 +15,7 @@ demo_user = User.first || User.create!(email: 'demo@example.com', password: 'pas
 
 posts = [
   { title: 'Rails 7 + Hotwire: the perfect match',
-    body:  'In this comprehensive article, we explore the powerful combination of Rails 7 with Hotwire technologies
+    body: 'In this comprehensive article, we explore the powerful combination of Rails 7 with Hotwire technologies
 including Turbo and Stimulus. These modern tools allow developers to create rich, interactive web applications without
 the complexity of traditional JavaScript frameworks like React or Vue. Hotwire brings the simplicity back to web
 development by leveraging server-side rendering while still providing dynamic user experiences through thoughtful
@@ -40,6 +40,6 @@ posts.each_with_index do |post, idx|
   root1 = post.post_comments.create!(content: "Great read ##{idx + 1}!", user: demo_user)
   post.post_comments.create!(content: 'Could you benchmark against MySQL?', user: demo_user)
 
-  child  = root1.children.create!(content: 'Seconded – numbers would be helpful.', user: demo_user, post: post)
+  child = root1.children.create!(content: 'Seconded – numbers would be helpful.', user: demo_user, post: post)
   child.children.create!(content: 'Working on it, will update soon.', user: demo_user, post: post)
 end
