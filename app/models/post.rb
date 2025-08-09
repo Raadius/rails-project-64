@@ -4,6 +4,10 @@ class Post < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :post_likes, dependent: :destroy
   has_many :liked_by_users, through: :post_likes, source: :user
+  
+  # Alias associations for backward compatibility with automatic tests
+  alias_method :comments, :post_comments
+  alias_method :likes, :post_likes
 
   validates :title, presence: true, length: { minimum: 5, maximum: 255 }
   validates :body, presence: true, length: { minimum: 200, maximum: 4000 }
