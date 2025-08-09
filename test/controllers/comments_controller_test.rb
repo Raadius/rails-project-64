@@ -5,6 +5,7 @@ require_relative '../helpers/comments_test_helper'
 
 class CommentsControllerTest < ActionDispatch::IntegrationTest
   include CommentsTestHelper
+
   setup do
     @post = posts(:one)
     @user_one = users(:one)
