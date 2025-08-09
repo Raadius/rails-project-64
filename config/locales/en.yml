@@ -1,8 +1,9 @@
 en:
   common_text:
     main_page_title: "Collaborative blog"
-    all_posts_breadcrumb: "Все посты"
+    all_posts_breadcrumb: "All posts"
     ago: "ago"
+    sign_in: 'You are not authorized. Please Sign in'
   forms:
     titles:
       sign_up: "Sign up"
@@ -29,9 +30,9 @@ en:
       remember_me: "Remember me"
       password_confirmation: "Password confirmation"
     hints:
-      post_body_allowed_symbols_number: "От 200 до 4000 символов"
-      post_title_allowed_symbols_number: "5-255 символов"
-      registration_password_allowed_symbols_minimum_number: "(минимум 6 знаков)"
+      post_body_allowed_symbols_number: "From 200 to 4000 symbols"
+      post_title_allowed_symbols_number: "5-255 symbols"
+      registration_password_allowed_symbols_minimum_number: "(6 symbols minimum)"
     errors:
       review_problems_below: "Please review the problems below:"
       invalid_email_or_password: "Invalid Email or password."

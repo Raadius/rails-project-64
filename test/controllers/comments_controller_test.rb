@@ -173,14 +173,6 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
 
   private
 
-  def post_comments_path(post)
-    "/posts/#{post.id}/comments"
-  end
-
-  def post_comment_path(post, comment)
-    "/posts/#{post.id}/comments/#{comment.id}"
-  end
-
   def extract_all_comments_from_subtree(subtree)
     comments = []
     subtree.each do |comment, children|

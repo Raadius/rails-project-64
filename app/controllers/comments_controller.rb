@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!, except: %i[show]
   before_action :set_post
   before_action :set_comment, only: %i[show destroy]
-
   def show
     @comment_subtree = @comment.subtree.arrange
     respond_to do |format|

@@ -1,5 +1,5 @@
 .container.my-4
-  = render 'shared/generic_error_messages', resource: resource
+  = render 'shared/system_message_components/generic_error_messages', resource: resource
   h2 = t('forms.titles.sign_up')
   = simple_form_for(resource, as: resource_name, url: user_registration_path) do |f|
     .form-inputs.d-flex.flex-column.gap-3.mb-3

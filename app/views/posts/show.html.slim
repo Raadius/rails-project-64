@@ -4,16 +4,30 @@
   ol.breadcrumb
     li.breadcrumb-item
       = link_to t('common_text.all_posts_breadcrumb'), root_path
-    li.breadcrumb-item.active = t("categories.#{post.category.name}")
+    li.breadcrumb-item.active = t("categories.#{@post.category.name}")
 
   .row.justify-content-center.mt-4
     article.col-12
-      h1.mb-4.mb-lg-5 = post.title
-      p = post.body
+      h1.mb-4.mb-lg-5 = @post.title
+      p = @post.body
       .d-flex.justify-content-between.mt-5
         div id='post-section'
-          span.me-2 = post.creator.email
-          span = time_ago_in_words(post.created_at) + ' ' + t('common_text.ago')
+          span.me-2 = @post.creator.email
+          span = time_ago_in_words(@post.created_at) + ' ' + t('common_text.ago')
         div id='likes-section'
+          span.me-2 = @post.post_likes.count
+          - if user_signed_in?
+            - user_like = @post.post_likes.find_by(user: current_user)
+            - if user_like
+              = link_to post_like_path(@post, user_like),
+                      method: :delete,
+                      class: 'link-dark',
+                      data: { turbo_method: :delete }
+                i.bi.bi-hand-thumbs-up-fill
+            - else
+              = link_to post_likes_path(@post), method: :post, class: 'link-dark', data: { turbo_method: :post }
+                i.bi.bi-hand-thumbs-up
+          - else
+            i.bi.bi-hand-thumbs-up
 
   = render 'shared/comments', post: @post

@@ -10,5 +10,5 @@
         .mt-2
           = f.submit t('comments.add_new_comment'), class: 'btn btn-primary'
 
-    .comments-list
-      = render 'shared/comment_tree', comments: post.post_comments.includes(:user).arrange, post: post
+  .comments-list
+    = render 'shared/comment_tree', comments: post.post_comments.includes(:user).arrange, post: post

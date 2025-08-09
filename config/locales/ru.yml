@@ -3,6 +3,7 @@ ru:
     main_page_title: "Коллективный блог"
     all_posts_breadcrumb: "Все посты"
     ago: "назад"
+    sign_in: 'Вы не авторизованы. Пожалуйста, войдите'
   forms:
     titles:
       sign_up: "Регистрация"

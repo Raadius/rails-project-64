@@ -4,7 +4,10 @@
     - if @posts.empty?
       span = t('post.empty')
       '
-      => link_to t('post.create_new_post'), new_post_path
+      - if user_signed_in?
+        = link_to t('post.create_new_post'), new_post_path
+      - else
+        = link_to t('common_text.sign_in'), new_user_session_path
     - else
       .d-flex.flex-column.gap-3
         - @posts.each do |post|
