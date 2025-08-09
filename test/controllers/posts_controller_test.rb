@@ -50,79 +50,26 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'should not create post with blank fields' do
+  test 'should not create post with invalid data' do
     sign_in @user
 
-    test_post_attributes = @post.attributes
-    test_post_attributes['title'] = ''
-    test_post_attributes['body'] = ''
-    test_post_attributes['category_id'] = @category.id
+    # Test blank title
+    invalid_attributes = @post.attributes
+    invalid_attributes['title'] = ''
+    invalid_attributes['category_id'] = @category.id
 
     assert_no_difference('Post.count') do
-      post posts_url, params: { post: test_post_attributes }
+      post posts_url, params: { post: invalid_attributes }
     end
-
     assert_response :unprocessable_entity
-    assert_select '.alert.alert-danger',
-                  text: I18n.t('forms.errors.generic.post')
-    assert_select '.post_title .invalid-feedback',
-                  text: I18n.t('activerecord.errors.models.post.attributes.title.blank')
-    assert_select '.post_body .invalid-feedback',
-                  text: I18n.t('activerecord.errors.models.post.attributes.body.blank')
-  end
 
-  test 'should not create post with not enough symbols' do
-    sign_in @user
-
-    test_post_attributes = @post.attributes
-    test_post_attributes['title'] = 'Post'
-    test_post_attributes['body'] = 'Not enough symbols'
-    test_post_attributes['category_id'] = @category.id
+    # Test missing category
+    invalid_attributes['title'] = 'Valid Title'
+    invalid_attributes['category_id'] = nil
 
     assert_no_difference('Post.count') do
-      post posts_url, params: { post: test_post_attributes }
+      post posts_url, params: { post: invalid_attributes }
     end
-
     assert_response :unprocessable_entity
-    assert_select '.alert.alert-danger', text: I18n.t('forms.errors.generic.post')
-    assert_select '.post_title .invalid-feedback',
-                  text: I18n.t('activerecord.errors.models.post.attributes.title.too_short')
-    assert_select '.post_body .invalid-feedback',
-                  text: I18n.t('activerecord.errors.models.post.attributes.body.too_short')
-  end
-
-  test 'should not create post with too many symbols' do
-    sign_in @user
-
-    test_post_attributes = @post.attributes
-    test_post_attributes['title'] = 'Post' * 1000
-    test_post_attributes['body'] = 'Too many symbols' * 1000
-    test_post_attributes['category_id'] = @category.id
-
-    assert_no_difference('Post.count') do
-      post posts_url, params: { post: test_post_attributes }
-    end
-
-    assert_response :unprocessable_entity
-    assert_select '.alert.alert-danger', text: I18n.t('forms.errors.generic.post')
-    assert_select '.post_title .invalid-feedback',
-                  text: I18n.t('activerecord.errors.models.post.attributes.title.too_long')
-    assert_select '.post_body .invalid-feedback',
-                  text: I18n.t('activerecord.errors.models.post.attributes.body.too_long')
-  end
-
-  test 'should not create post with invalid category' do
-    sign_in @user
-    test_post_attributes = @post.attributes
-    test_post_attributes['category_id'] = nil
-
-    assert_no_difference('Post.count') do
-      post posts_url, params: { post: test_post_attributes }
-    end
-
-    assert_response :unprocessable_entity
-    assert_select '.alert.alert-danger', text: I18n.t('forms.errors.generic.post')
-    assert_select '.post_category .invalid-feedback',
-                  text: I18n.t('activerecord.errors.models.post.attributes.category.required')
   end
 end

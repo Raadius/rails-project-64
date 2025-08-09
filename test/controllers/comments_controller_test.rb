@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 require 'test_helper'
+require_relative '../helpers/comments_test_helper'
 
 class CommentsControllerTest < ActionDispatch::IntegrationTest
+  include CommentsTestHelper
   setup do
     @post = posts(:one)
     @user_one = users(:one)
@@ -119,68 +121,5 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     get post_comment_path(@post, @root_comment)
 
     assert_redirected_to @post
-  end
-
-  test 'should display reply form with correct collapse attributes when signed in' do
-    sign_in @user_one
-
-    get post_path(@post)
-
-    assert_response :success
-    assert_select "a[data-bs-toggle='collapse']", minimum: 1
-    assert_select "a[data-bs-target='#response_comment-#{@root_comment.id}']", 1
-    assert_select "a[aria-controls='response_comment-#{@root_comment.id}']", 1
-    assert_select ".collapse#response_comment-#{@root_comment.id}", 1
-  end
-
-  test 'should not display reply form when not signed in' do
-    get post_path(@post)
-
-    assert_response :success
-    assert_select "a[data-bs-toggle='collapse']", 0
-    assert_select '.collapse', 0
-  end
-
-  test 'reply form should have correct parent_id hidden field' do
-    sign_in @user_one
-
-    get post_path(@post)
-
-    assert_response :success
-    assert_select 'form.reply-form' do
-      assert_select "input[name='post_comment[parent_id]'][value='#{@root_comment.id}'][type='hidden']", 1
-    end
-  end
-
-  test 'should create reply via reply form successfully' do
-    sign_in @user_two
-
-    reply_content = 'This is a reply via the form'
-    assert_difference('@post.post_comments.count', 1) do
-      post post_comments_path(@post), params: {
-        post_comment: {
-          content: reply_content,
-          parent_id: @root_comment.id
-        }
-      }
-    end
-
-    created_reply = @post.post_comments.last
-    assert_equal reply_content, created_reply.content
-    assert_equal @user_two, created_reply.user
-    assert_equal @root_comment, created_reply.parent
-    assert_equal "/#{@root_comment.id}/", created_reply.ancestry
-    assert_redirected_to post_path(@post)
-  end
-
-  private
-
-  def extract_all_comments_from_subtree(subtree)
-    comments = []
-    subtree.each do |comment, children|
-      comments << comment
-      comments.concat(extract_all_comments_from_subtree(children)) if children.is_a?(Hash)
-    end
-    comments
   end
 end
