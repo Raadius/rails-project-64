@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create]
   before_action :find_post, only: %i[ show ]
@@ -30,11 +32,12 @@ class PostsController < ApplicationController
   end
 
   private
-    def find_post
-      @post = Post.find(params[:id])
-    end
 
-    def post_params
-      params.require(:post).permit(:title, :body, :category_id)
-    end
+  def find_post
+    @post = Post.find(params[:id])
+  end
+
+  def post_params
+    params.require(:post).permit(:title, :body, :category_id)
+  end
 end

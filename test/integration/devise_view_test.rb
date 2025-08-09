@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 class DeviseViewTest < ActionDispatch::IntegrationTest
   test 'registration page renders correct view' do

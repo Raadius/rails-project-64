@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Post < ApplicationRecord
   belongs_to :category
   belongs_to :creator, class_name: 'User'
@@ -5,9 +7,9 @@ class Post < ApplicationRecord
   has_many :post_likes, dependent: :destroy
   has_many :liked_by_users, through: :post_likes, source: :user
 
-  # Alias-ассоциации для обратной совместимости с авто тестами
-  alias_method :comments, :post_comments
-  alias_method :likes, :post_likes
+  # Alias associations for backward compatibility with automatic tests
+  alias comments post_comments
+  alias likes post_likes
 
   validates :title, presence: true, length: { minimum: 5, maximum: 255 }
   validates :body, presence: true, length: { minimum: 200, maximum: 4000 }

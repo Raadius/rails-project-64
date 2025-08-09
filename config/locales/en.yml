@@ -72,6 +72,11 @@ en:
     title: "Comments"
     add_new_comment: "Add new comment"
     add_answer: "Reply"
+    actions:
+      deleted_successfully: "Comment was successfully deleted!"
+      deleted_failed: "Comment was not deleted. Please try again."
+      create_successfully: "Comment was successfully created!"
+      create_failed: "Comment was not created. Please try again."
   devise:
     sign_up: "Sign up"
     sign_in: "Sign in"

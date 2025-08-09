@@ -75,6 +75,11 @@ ru:
     title: "Комментарии"
     add_new_comment: "Оставить комментарий"
     add_answer: "Ответить"
+    actions:
+      deleted_successfully: "Комментарий были успешно удалены!"
+      deleted_failed: "Произошла ошибка при удалении комментария. Попробуйте ещё раз."
+      create_successfully: "Комментарий был успешно создан!"
+      create_failed: "Комментарий не был создан. Попробуйте ещё раз."
   devise:
     sign_up: "Регистрация"
     sign_in: "Войти"

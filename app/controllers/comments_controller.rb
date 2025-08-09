@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   before_action :authenticate_user!, except: %i[show]
   before_action :set_post
@@ -22,7 +24,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @post, notice: 'Comment was successfully created.' } # TODO: add I18n
+        format.html { redirect_to @post, notice: I18n.t('comments.actions.create_successfully') }
       else
         format.html { render 'posts/show', status: :unprocessable_entity }
       end
@@ -33,19 +35,20 @@ class CommentsController < ApplicationController
     if can_delete_comment?
       @comment.destroy
       respond_to do |format|
-        format.html { redirect_to @post, notice: 'Comment was successfully deleted.' } # TODO: add I18n
+        format.html { redirect_to @post, notice: I18n.t('comments.actions.deleted_successfully') }
       end
     else
       respond_to do |format|
-        format.html { redirect_to @post, alert: 'Comment was not deleted.' } # TODO: add I18n
+        format.html { redirect_to @post, alert: I18n.t('comments.actions.deleted_failed') }
       end
     end
   end
 
   private
-    def set_post
-      @post = Post.find(params[:post_id])
-    end
+
+  def set_post
+    @post = Post.find(params[:post_id])
+  end
 
   def set_comment
     @comment = @post.post_comments.find(params[:id])

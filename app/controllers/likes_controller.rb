@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LikesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_post
@@ -13,7 +15,8 @@ class LikesController < ApplicationController
   end
 
   private
-    def set_post
-      @post = Post.find(params[:post_id])
-    end
+
+  def set_post
+    @post = Post.find(params[:post_id])
+  end
 end

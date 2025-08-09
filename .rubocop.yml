@@ -53,6 +53,9 @@ Layout/LineLength:
     - 'config/**/*'
     - 'db/migrate/*'
 
+Layout/SpaceInsideArrayLiteralBrackets:
+  EnforcedStyle: no_space
+
 # Style preferences for Rails
 Style/Documentation:
   Enabled: false
@@ -65,6 +68,20 @@ Style/StringLiterals:
 
 Style/StringLiteralsInInterpolation:
   EnforcedStyle: double_quotes
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  EnforcedStyle: always
+
+Style/SymbolArray:
+  Enabled: true
+  EnforcedStyle: percent
+
+# Lint rules
+Lint/UnusedMethodArgument:
+  Enabled: true
+  AllowUnusedKeywordArguments: false
+  IgnoreEmptyMethods: true
 
 # Rails-specific cops
 Rails/I18nLocaleTexts:
