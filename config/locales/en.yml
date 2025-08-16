@@ -128,3 +128,10 @@ en:
               too_short: "Comment is too short. Minimum 5 characters required"
               too_long: "Comment is too long. Maximum 400 characters"
               blank: "Comment can't be blank"
+        category:
+          attributes:
+            name:
+              too_short: "Category name is too short. Minimum 5 characters required"
+              too_long: "Category name is too long. Maximum 50 characters"
+              blank: "Category name can't be blank"
+              taken: "Category name is already taken"
