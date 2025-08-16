@@ -9,7 +9,7 @@ class LikesIntegrationTest < ActionDispatch::IntegrationTest
     get post_path(post)
     assert_response :success
 
-    assert_select 'div#likes-section span', text: post.post_likes.count.to_s
+    assert_select 'div#likes-section span', text: post.likes_count.to_s
     assert_select 'div#likes-section i.bi.bi-hand-thumbs-up', count: 1
     assert_select 'div#likes-section i.bi.bi-hand-thumbs-up-fill', count: 0
 
@@ -22,12 +22,11 @@ class LikesIntegrationTest < ActionDispatch::IntegrationTest
 
     sign_in user
 
-    initial_likes_count = post.post_likes.count
+    initial_likes_count = post.likes_count
 
     get post_path(post)
     assert_response :success
 
-    # Should see empty thumbs up and add link initially
     assert_select 'div#likes-section i.bi.bi-hand-thumbs-up', count: 1
     assert_select 'div#likes-section i.bi.bi-hand-thumbs-up-fill', count: 0
     assert_select 'a[href=?][data-turbo-method=?]', post_likes_path(post), 'post', count: 1
@@ -40,12 +39,10 @@ class LikesIntegrationTest < ActionDispatch::IntegrationTest
     assert_redirected_to post_path(post)
     follow_redirect!
 
-    # Verify like count increased and UI updated
     post.reload
-    assert_equal initial_likes_count + 1, post.post_likes.count
+    assert_equal initial_likes_count + 1, post.likes_count
 
-    # Should now see filled thumbs up and delete link
-    assert_select 'div#likes-section span', text: post.post_likes.count.to_s
+    assert_select 'div#likes-section span', text: post.likes_count.to_s
     assert_select 'div#likes-section i.bi.bi-hand-thumbs-up-fill', count: 1
     assert_select 'div#likes-section i.bi.bi-hand-thumbs-up', count: 0
 
@@ -59,12 +56,11 @@ class LikesIntegrationTest < ActionDispatch::IntegrationTest
 
     sign_in user
 
-    initial_likes_count = post.post_likes.count
+    initial_likes_count = post.likes_count
 
     get post_path(post)
     assert_response :success
 
-    # Should see filled thumbs up since user already liked (from fixtures)
     assert_select 'div#likes-section i.bi.bi-hand-thumbs-up-fill', count: 1
     assert_select 'div#likes-section i.bi.bi-hand-thumbs-up', count: 0
 
@@ -72,7 +68,6 @@ class LikesIntegrationTest < ActionDispatch::IntegrationTest
     assert_not_nil user_like
     assert_select 'a[href=?][data-turbo-method=?]', post_like_path(post, user_like), 'delete', count: 1
 
-    # Remove the like
     assert_difference 'PostLike.count', -1 do
       delete post_like_path(post, user_like)
     end
@@ -80,12 +75,10 @@ class LikesIntegrationTest < ActionDispatch::IntegrationTest
     assert_redirected_to post_path(post)
     follow_redirect!
 
-    # Verify like count decreased and UI updated
     post.reload
-    assert_equal initial_likes_count - 1, post.post_likes.count
+    assert_equal initial_likes_count - 1, post.likes_count
 
-    # Should now see empty thumbs up and add link
-    assert_select 'div#likes-section span', text: post.post_likes.count.to_s
+    assert_select 'div#likes-section span', text: post.likes_count.to_s
     assert_select 'div#likes-section i.bi.bi-hand-thumbs-up', count: 1
     assert_select 'div#likes-section i.bi.bi-hand-thumbs-up-fill', count: 0
     assert_select 'a[href=?][data-turbo-method=?]', post_likes_path(post), 'post', count: 1

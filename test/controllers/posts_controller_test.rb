@@ -53,7 +53,6 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   test 'should not create post with invalid data' do
     sign_in @user
 
-    # Test blank title
     invalid_attributes = @post.attributes
     invalid_attributes['title'] = ''
     invalid_attributes['category_id'] = @category.id
@@ -63,7 +62,6 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_response :unprocessable_entity
 
-    # Test missing category
     invalid_attributes['title'] = 'Valid Title'
     invalid_attributes['category_id'] = nil
 

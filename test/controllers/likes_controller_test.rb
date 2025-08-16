@@ -20,7 +20,6 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
     post.reload
     assert_equal initial_likes_count + 1, post.post_likes.count
 
-    # Verify the like belongs to the correct user and post
     user_like = post.post_likes.find_by(user: user)
     assert_not_nil user_like
     assert_equal user, user_like.user
@@ -46,7 +45,6 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
     post.reload
     assert_equal initial_likes_count - 1, post.post_likes.count
 
-    # Verify the like was actually removed
     assert_nil post.post_likes.find_by(user: user)
   end
 
