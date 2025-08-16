@@ -24,9 +24,16 @@ rubocop-fix:
 rubocop-safe-fix:
 	bundle exec rubocop --autocorrect
 
-run-tests:
-	bundle exec rake test
-
 lint-all: rubocop slim-lint
 
 fix-all: rubocop-safe-fix
+
+# Test tasks
+run-tests:
+	bundle exec rake test
+
+# prepare project to run locally
+prepare-local:
+	bundle install
+	bundle exec rails db:migrate
+	bundle exec rails db:seed

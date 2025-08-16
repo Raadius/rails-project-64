@@ -4,7 +4,6 @@ require 'test_helper'
 
 class DeviseFormsTest < ActionDispatch::IntegrationTest
   setup do
-    # Clear dependent records first to avoid foreign key constraint issues
     PostComment.destroy_all
     Post.destroy_all
     User.destroy_all

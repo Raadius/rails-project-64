@@ -15,7 +15,7 @@
           span.me-2 = @post.creator.email
           span = time_ago_in_words(@post.created_at) + ' ' + t('common_text.ago')
         div id='likes-section'
-          span.me-2 = @post.post_likes.count
+          span.me-2 = @post.likes_count
           - if user_signed_in?
             - user_like = @post.post_likes.find_by(user: current_user)
             - if user_like
