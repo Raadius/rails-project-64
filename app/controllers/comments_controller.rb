@@ -22,25 +22,19 @@ class CommentsController < ApplicationController
       @comment.parent = parent_comment
     end
 
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to @post, notice: I18n.t('comments.actions.create_successfully') }
-      else
-        format.html { render 'posts/show', status: :unprocessable_entity }
-      end
+    if @comment.save
+      redirect_to @post, notice: I18n.t('comments.actions.create_successfully')
+    else
+      render 'posts/show', status: :unprocessable_entity
     end
   end
 
   def destroy
     if can_delete_comment?
       @comment.destroy
-      respond_to do |format|
-        format.html { redirect_to @post, notice: I18n.t('comments.actions.deleted_successfully') }
-      end
+      redirect_to @post, notice: I18n.t('comments.actions.deleted_successfully')
     else
-      respond_to do |format|
-        format.html { redirect_to @post, alert: I18n.t('comments.actions.deleted_failed') }
-      end
+      redirect_to @post, alert: I18n.t('comments.actions.deleted_failed')
     end
   end
 
